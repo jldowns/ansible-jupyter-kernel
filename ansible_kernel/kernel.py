@@ -1248,7 +1248,7 @@ class AnsibleKernel(Kernel):
             msg6_data = json.loads(msg6)
 
             if msg0.startswith(b"comm"):
-                _, _, comm_id = msg0.partition('-')
+                _, _, comm_id = msg0.partition(b"-")
                 if msg3_data['msg_type'] == 'comm_open' and msg6_data['comm_id'] == comm_id:
                     self.update_widget(comm_id, msg6_data.get('data', {}).get('state', {}))
                     logger.debug("new widget %s %s", comm_id, pformat(self.widgets[comm_id]))
